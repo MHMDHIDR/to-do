@@ -20,16 +20,20 @@
 body {
   background-color: rgba(0, 0, 0, 0.1);
   font-family: "Fira Code Regular", sans-serif;
+  overflow: hidden;
 }
 
 :root {
   --overlay-color: rgba(20, 65, 124, 0.77);
   --primary-color: #4162f6;
   --duration-speed: 0.5s;
+  /* Mozilla firefox Scrollbar */
+  scrollbar-color: var(--primary-color) var(--overlay-color);
+  scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
-  width: 0.33rem;
+  width: 0.3rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -137,8 +141,7 @@ body {
   height: 2px;
   width: 100%;
   background-color: #fff;
-  position: absolute;
-  top: 0;
+  pointer-events: none;
   -webkit-transition: -webkit-transform var(--duration-speed) ease;
   transition: -webkit-transform var(--duration-speed) ease;
   transition: transform var(--duration-speed) ease;
@@ -164,6 +167,7 @@ body {
   top: 2.5rem;
   width: 1.5rem;
   height: 1.5rem;
+  z-index: 1;
 }
 
 .app-container > header > .container > nav > .reset > .action-btn:hover {
@@ -175,7 +179,7 @@ body {
   text-transform: uppercase;
   position: absolute;
   bottom: 20px;
-  font-weight: normal;
+  z-index: 1;
 }
 
 .app-container > aside > .menu {
@@ -242,7 +246,7 @@ body {
 
 .app-container > main {
   min-height: 10rem;
-  max-height: 25rem;
+  max-height: 27rem;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -265,6 +269,7 @@ body {
 
 .app-container > main .tasks .task:last-of-type {
   border-bottom: 0;
+  margin-bottom: 0;
 }
 
 .app-container > main .tasks .task > .fa-check-circle,
@@ -315,36 +320,46 @@ body {
 .app-container > footer {
   position: relative;
   width: 100%;
-  min-height: 50px;
+  min-height: 3rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.app-container > footer .add-btn {
+.app-container > footer form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.app-container > footer form > .add-btn {
   position: absolute;
-  left: 40px;
-  top: 15px;
-  width: 25px;
-  z-index: 1;
+  left: 1rem;
+  top: 1rem;
   cursor: pointer;
+  width: 2rem;
+  height: 2rem;
   outline: none;
   border: none;
   background-color: transparent;
 }
 
-.app-container > footer .add-btn > .fa-plus-circle {
+.app-container > footer form > .add-btn > .action-btn {
+  font-size: 2rem;
   color: var(--primary-color);
 }
 
-.app-container > footer .task-input {
+.app-container > footer form > .task-input {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 22px;
+  font-size: 1.5rem;
   font-family: inherit;
-  padding: 15px 15px 15px 80px;
+  padding: 1rem;
+  padding-left: 3.5rem;
 }
 
-.app-container > footer .task-input::-webkit-input-placeholder {
+.app-container > footer form > .task-input::-webkit-input-placeholder {
   color: var(--primary-color);
 }
 

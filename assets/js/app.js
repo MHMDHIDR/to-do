@@ -79,8 +79,8 @@ function makeAction(e) {
     tasks.innerHTML = '';
   } else if(targetElem == hambCheck) {
     menuOverlay.classList.toggle('show');
-    tasks.classList.toggle('pointerEveNone');
-    footer.classList.toggle('pointerEveNone');
+    tasks.classList.toggle('pointer-e-none');
+    footer.classList.toggle('pointer-e-none');
     
   }
   
