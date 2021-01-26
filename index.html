@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <title>To Do App</title>
+  </head>
+
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="container">
+          <nav>
+            <div class="hamburger-menu">
+              <input type="checkbox" />
+              <div class="hamburger-lines"></div>
+            </div>
+            <div class="reset">
+              <i class="fas fa-redo action-btn"></i>
+            </div>
+          </nav>
+          <h2>plan the day!</h2>
+        </div>
+      </header>
+      <aside>
+        <div class="menu">
+          <div class="overlay">
+            <ul class="select-view">
+              <li class="all">All</li>
+              <li class="completed">Completed</li>
+              <li class="uncompleted">Uncompleted</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <main id="main">
+        <ul class="tasks"></ul>
+      </main>
+      <footer>
+        <form>
+          <button type="submit" class="add-btn">
+            <i class="fa fa-plus-circle action-btn"></i>
+          </button>
+          <input
+            type="text"
+            id="task-input"
+            class="task-input"
+            placeholder="Add a Task"
+          />
+        </form>
+      </footer>
+    </div>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>

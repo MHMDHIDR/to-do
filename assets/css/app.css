@@ -1,0 +1,353 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-family: "Fira Code", monospace, sans-serif;
+}
+
+:root {
+  --overlay-color: rgba(20, 65, 124, 0.77);
+  --primary-color: #4162f6;
+  --duration-speed: 0.5s;
+}
+
+::-webkit-scrollbar {
+  width: 0.33rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+.app-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #fcfcfc;
+  max-width: 400px;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: auto;
+  overflow: hidden;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.app-container .action-btn {
+  cursor: pointer;
+  color: #d2d2d2;
+  font-size: 1.5rem;
+}
+
+.app-container .pointer-e-none {
+  pointer-events: none;
+}
+
+.app-container > header {
+  min-height: 15rem;
+  background-image: url(../imgs/bg-2.jpg);
+  background-size: 150%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.app-container > header > .container {
+  width: 90%;
+  margin: auto;
+}
+
+.app-container > header > .container > nav {
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.app-container > header > .container > nav > .hamburger-menu {
+  position: relative;
+  top: 3rem;
+  height: 2rem;
+  width: 2.5rem;
+  z-index: 4;
+}
+
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"] {
+  cursor: pointer;
+  width: inherit;
+  height: inherit;
+  display: block;
+  position: absolute;
+  top: -0.9rem;
+  left: 0;
+  opacity: 0;
+}
+
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::before, .app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::after {
+  top: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked:hover + .hamburger-lines {
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked ~ .menu > .overlay {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked ~ .menu > .overlay > .select-view {
+  opacity: 1;
+}
+
+.app-container > header > .container > nav > .hamburger-menu > .hamburger-lines {
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  -webkit-transition: -webkit-transform var(--duration-speed) ease;
+  transition: -webkit-transform var(--duration-speed) ease;
+  transition: transform var(--duration-speed) ease;
+  transition: transform var(--duration-speed) ease, -webkit-transform var(--duration-speed) ease;
+}
+
+.app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::before, .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: inherit;
+  height: inherit;
+  background: inherit;
+}
+
+.app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
+  top: 10px;
+}
+
+.app-container > header > .container > nav > .reset {
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.app-container > header > .container > nav > .reset > .action-btn:hover {
+  color: #fff;
+}
+
+.app-container > header > .container > h2 {
+  color: #fff;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 20px;
+  font-weight: normal;
+}
+
+.app-container > aside > .menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.app-container > aside > .menu > .overlay {
+  background-color: var(--overlay-color);
+  border-radius: 50%;
+  height: 200vh;
+  width: 200vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform var(--duration-speed) ease;
+  transition: -webkit-transform var(--duration-speed) ease;
+  transition: transform var(--duration-speed) ease;
+  transition: transform var(--duration-speed) ease, -webkit-transform var(--duration-speed) ease;
+  z-index: 3;
+}
+
+.app-container > aside > .menu > .overlay.show {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.app-container > aside > .menu > div > .select-view > li {
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.app-container > aside > .menu > div > .select-view > li:last-of-type {
+  margin-bottom: 0;
+}
+
+.app-container > main {
+  min-height: 10rem;
+  max-height: 25rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: auto;
+}
+
+.app-container > main .tasks {
+  margin: 0.5rem 1rem;
+  overflow: hidden;
+}
+
+.app-container > main .tasks .task {
+  position: relative;
+  list-style: none;
+  font-size: 22px;
+  min-height: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.app-container > main .tasks .task:last-of-type {
+  border-bottom: 0;
+}
+
+.app-container > main .tasks .task > .fa-check-circle,
+.app-container > main .tasks .task .fa-circle:hover {
+  color: #00b400;
+}
+
+.app-container > main .tasks .task > i,
+.app-container > main .tasks .task > p,
+.app-container > main .tasks .task > .options {
+  position: absolute;
+}
+
+.app-container > main .tasks .task > i .fa-edit:hover,
+.app-container > main .tasks .task > p .fa-edit:hover,
+.app-container > main .tasks .task > .options .fa-edit:hover {
+  color: #555;
+}
+
+.app-container > main .tasks .task > i .fa-thumbtack:hover,
+.app-container > main .tasks .task > p .fa-thumbtack:hover,
+.app-container > main .tasks .task > .options .fa-thumbtack:hover {
+  color: #323232;
+}
+
+.app-container > main .tasks .task > i .fa-trash-alt:hover,
+.app-container > main .tasks .task > p .fa-trash-alt:hover,
+.app-container > main .tasks .task > .options .fa-trash-alt:hover {
+  color: #b40000;
+}
+
+.app-container > main .tasks .task > p {
+  left: 2.18rem;
+  width: 12.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-container > main .tasks .task > p.line-through {
+  color: #d2d2d2;
+  text-decoration: line-through;
+}
+
+.app-container > main .tasks .task > .options {
+  right: 0;
+}
+
+.app-container > footer {
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-container > footer .add-btn {
+  position: absolute;
+  left: 40px;
+  top: 15px;
+  width: 25px;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.app-container > footer .add-btn > .fa-plus-circle {
+  color: var(--primary-color);
+}
+
+.app-container > footer .task-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 22px;
+  font-family: inherit;
+  padding: 15px 15px 15px 80px;
+}
+
+.app-container > footer .task-input::-webkit-input-placeholder {
+  color: var(--primary-color);
+}
+
+/* 
+  media for max-width (650px)
+  Anything smaller will apply here
+*/
+@media (max-width: 650px) {
+  .app-container .hamburger-lines {
+    left: 1rem;
+  }
+  .app-container .reset {
+    right: 1rem;
+  }
+}
+/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,302 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-family: "Fira Code", monospace, sans-serif;
+}
+
+:root {
+  --overlay-color: rgba(20, 65, 124, 0.77);
+  --primary-color: #4162f6;
+  --duration-speed: 0.5s;
+}
+
+::-webkit-scrollbar {
+  width: 0.33rem;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+.app-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fcfcfc;
+  max-width: 400px;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: auto;
+  overflow: hidden;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  .action-btn {
+    cursor: pointer;
+    color: #d2d2d2;
+    font-size: 1.5rem;
+  }
+  .pointer-e-none {
+    pointer-events: none;
+  }
+
+  > header {
+    min-height: 15rem;
+    background-image: url(../imgs/bg-2.jpg);
+    background-size: 150%;
+    background-repeat: no-repeat;
+    position: relative;
+
+    > .container {
+      width: 90%;
+      margin: auto;
+
+      > nav {
+        height: 70px;
+        display: flex;
+        position: relative;
+
+        > .hamburger-menu {
+          position: relative;
+          top: 3rem;
+          height: 2rem;
+          width: 2.5rem;
+          z-index: 4;
+
+          > input[type="checkbox"] {
+            cursor: pointer;
+            width: inherit;
+            height: inherit;
+            display: block;
+            position: absolute;
+            top: -0.9rem;
+            left: 0;
+            opacity: 0;
+
+            &:checked {
+              + .hamburger-lines {
+                transform: rotate(135deg);
+
+                &::before,
+                &::after {
+                  top: 0;
+                  transform: rotate(90deg);
+                }
+              }
+
+              &:hover + .hamburger-lines {
+                transform: rotate(225deg);
+              }
+
+              ~ .menu > .overlay {
+                transform: scale(1);
+
+                > .select-view {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+
+          > .hamburger-lines {
+            height: 2px;
+            width: 100%;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            transition: transform var(--duration-speed) ease;
+
+            &::before,
+            &::after {
+              content: "";
+              position: absolute;
+              top: -10px;
+              width: inherit;
+              height: inherit;
+              background: inherit;
+            }
+
+            &::after {
+              top: 10px;
+            }
+          }
+        }
+
+        > .reset {
+          position: absolute;
+          right: 0;
+          top: 2.5rem;
+          width: 1.5rem;
+          height: 1.5rem;
+
+          > .action-btn {
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      > h2 {
+        color: #fff;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 20px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  > aside {
+    > .menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+
+      > .overlay {
+        background-color: var(--overlay-color);
+        border-radius: 50%;
+        height: 200vh;
+        width: 200vw;
+        display: flex;
+        flex: none;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0);
+        transition: transform var(--duration-speed) ease;
+        z-index: 3;
+
+        &.show {
+          transform: scale(1);
+        }
+      }
+
+      > div > .select-view > li {
+        cursor: pointer;
+        list-style: none;
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  > main {
+    min-height: 10rem;
+    max-height: 25rem;
+    flex: 1;
+    overflow: auto;
+
+    .tasks {
+      margin: 0.5rem 1rem;
+      overflow: hidden;
+
+      .task {
+        position: relative;
+        list-style: none;
+        font-size: 22px;
+        min-height: 40px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+
+        &:last-of-type {
+          border-bottom: 0;
+        }
+
+        > .fa-check-circle,
+        .fa-circle:hover {
+          color: #00b400;
+        }
+
+        & > i,
+        & > p,
+        & > .options {
+          position: absolute;
+
+          .fa-edit:hover {
+            color: #555;
+          }
+
+          .fa-thumbtack:hover {
+            color: rgb(50, 50, 50);
+          }
+
+          .fa-trash-alt:hover {
+            color: #b40000;
+          }
+        }
+
+        > p {
+          left: 2.18rem;
+          width: 12.5rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &.line-through {
+            color: #d2d2d2;
+            text-decoration: line-through;
+          }
+        }
+
+        > .options {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  > footer {
+    position: relative;
+    width: 100%;
+    min-height: 50px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    .add-btn {
+      position: absolute;
+      left: 40px;
+      top: 15px;
+      width: 25px;
+      z-index: 1;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background-color: transparent;
+
+      > .fa-plus-circle {
+        color: var(--primary-color);
+      }
+    }
+
+    .task-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 22px;
+      font-family: inherit;
+      padding: 15px 15px 15px 80px;
+
+      &::-webkit-input-placeholder {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+@import "_media-small";
