@@ -6,9 +6,18 @@
   margin: 0;
 }
 
+@font-face {
+  font-family: "Fira Code Regular";
+  src: url("../fonts/fira_code/FiraCode-Regular.ttf");
+}
+@font-face {
+  font-family: "Fira Code Bold";
+  src: url("../fonts/fira_code/FiraCode-Bold.ttf");
+}
+
 body {
   background-color: rgba(0, 0, 0, 0.1);
-  font-family: "Fira Code", monospace, sans-serif;
+  font-family: "Fira Code Regular", sans-serif;
 }
 
 :root {
@@ -48,7 +57,7 @@ body {
   }
 
   > header {
-    min-height: 15rem;
+    min-height: 17rem;
     background-image: url(../imgs/bg-2.jpg);
     background-size: 150%;
     background-repeat: no-repeat;

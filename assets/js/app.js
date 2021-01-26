@@ -4,12 +4,29 @@ const tasks = document.querySelector(".tasks");
 const appContainer = document.querySelector(".app-container");
 const addBtn = document.querySelector(".add-btn");
 const inputTask = document.getElementById("task-input");
+const welcomePhrase = document.querySelector('#welcomePhrase');
 
 // Classes
-
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle";
 const DONE = "line-through";
+
+// show welcomePhrases Randomly
+const welcomePhrasesEn = ['plan the day', 'you got this ;)', 'how are you doing today? :)', 'you can accomplish anything! :D']
+
+welcomePhrasesEn.forEach(phrase => {
+  welcomePhrase.innerText = phrase;
+})
+
+
+const heroElem = document.querySelector('.hero-bg');
+
+if(heroElem !== null) { // if hero element exists then change bg image
+  const heroBg = ['1.png', '2.png', '3.png', '4.png', '5.png'];
+  const heroBgPath = "wp-content/themes/aae_qtr/assets/img/hero-bgs/";
+
+  heroElem.style.background = "#ccc url('"+heroBgPath+heroBg[Math.floor(Math.random() * heroBg.length)]+"') center / cover no-repeat fixed";
+}
 
 // EventListeners
 addBtn.addEventListener("click", addTask);
@@ -46,6 +63,7 @@ function addTask(e) {
 }
 
 function makeAction(e) {
+  // make an action based on the target
   const targetElem = e.target;
   
   const reset = document.querySelector('.reset > .action-btn');
@@ -53,8 +71,7 @@ function makeAction(e) {
   const hambCheck = document.querySelector('.hamburger-menu > input[type="checkbox"]');
   const menuOverlay = document.querySelector('.menu > .overlay');
   
-  const main = tasks.querySelectorAll('*');
-  const footer = document.querySelectorAll('.app-container > footer *');
+  const footer = document.querySelector('.app-container > footer');
   
 
   if (targetElem == reset) { // clear all list
@@ -62,8 +79,9 @@ function makeAction(e) {
     tasks.innerHTML = '';
   } else if(targetElem == hambCheck) {
     menuOverlay.classList.toggle('show');
-    main.classList.toggle('pointerEveNone');
+    tasks.classList.toggle('pointerEveNone');
     footer.classList.toggle('pointerEveNone');
+    
   }
   
 
