@@ -14,14 +14,18 @@ const footer = document.querySelector('.app-container > footer');
 
 
 // show welcomePhrases Randomly
+/* 
+  html decimal code from:
+  https://www.w3schools.com/charsets/ref_emoji_smileys.asp
+*/
 const welcomePhrasesEn = [
-  'plan the day...',
-  'you got this ;)',
-  'how are you doing today? :)',
-  'you can accomplish anything! :D'
+  'plan the day &#128513;', // 😁
+  'you got this	&#128170; &#128521;', // 💪😉
+  'how are you doing today? &#129300;', // 🤔
+  'you can accomplish anything! &#128515;' // 😃
 ];
 const randomPhraseIndex = Math.floor(Math.random() * welcomePhrasesEn.length);
-welcomePhrase.innerText = welcomePhrasesEn[randomPhraseIndex];
+welcomePhrase.innerHTML = welcomePhrasesEn[randomPhraseIndex];
 
 
 // EventListeners
