@@ -12,32 +12,20 @@ const UNCHECK = "fa-circle";
 const DONE = "line-through";
 
 // show welcomePhrases Randomly
-const welcomePhrasesEn = ['plan the day', 'you got this ;)', 'how are you doing today? :)', 'you can accomplish anything! :D']
+const welcomePhrasesEn = [
+  'plan the day...',
+  'you got this ;)',
+  'how are you doing today? :)',
+  'you can accomplish anything! :D'
+];
+const randomPhraseIndex = Math.floor(Math.random() * welcomePhrasesEn.length);
+welcomePhrase.innerText = welcomePhrasesEn[randomPhraseIndex];
 
-welcomePhrasesEn.forEach(phrase => {
-  welcomePhrase.innerText = phrase;
-})
-
-
-const heroElem = document.querySelector('.hero-bg');
-
-if(heroElem !== null) { // if hero element exists then change bg image
-  const heroBg = ['1.png', '2.png', '3.png', '4.png', '5.png'];
-  const heroBgPath = "wp-content/themes/aae_qtr/assets/img/hero-bgs/";
-
-  heroElem.style.background = "#ccc url('"+heroBgPath+heroBg[Math.floor(Math.random() * heroBg.length)]+"') center / cover no-repeat fixed";
-}
 
 // EventListeners
 addBtn.addEventListener("click", addTask);
 
-// Make actions depending on what element is clicked
 appContainer.addEventListener("click", makeAction);
-
-// Clear All tasks
-restBtn.addEventListener("click", () => {
-  // location.reload();
-});
 
 // Functions
 function addTask(e) {
@@ -83,7 +71,6 @@ function makeAction(e) {
     footer.classList.toggle('pointer-e-none');
   }
   
-
   /* === check and uncheck an item === */
   if (targetElem.classList.contains(UNCHECK)) {
     targetElem.classList.remove(UNCHECK);
