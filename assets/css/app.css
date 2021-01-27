@@ -188,13 +188,17 @@ body {
           align-items: center;
   text-align: center;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .app-container > aside > .menu > .overlay {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(65, 98, 246, 0.5)), to(rgba(20, 65, 124, 0.5)));
+  background-image: linear-gradient(to bottom right, rgba(65, 98, 246, 0.5), rgba(20, 65, 124, 0.5));
   background-color: var(--overlay-color);
-  border-radius: 50%;
-  height: 300vh;
-  width: 300vw;
+  border-radius: 2rem;
+  height: 100%;
+  width: 100%;
+  padding-top: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -204,21 +208,22 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: scale(0);
-          transform: scale(0);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   z-index: 3;
+  -webkit-transform: translateY(150%);
+          transform: translateY(150%);
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
 }
 
 .app-container > aside > .menu > .overlay.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.app-container > aside > .menu > .overlay.active > .select-view {
-  opacity: 1;
+  -webkit-transform: translateY(75%);
+          transform: translateY(75%);
+  -webkit-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+  pointer-events: all;
 }
 
 .app-container > aside > .menu > div > .select-view > li {
@@ -352,8 +357,7 @@ body {
 /* Transitions */
 .hamburger-lines,
 .hamburger-lines::before,
-.hamburger-lines::after,
-.overlay {
+.hamburger-lines::after {
   -webkit-transition: all var(--transition-duration) var(--transition-style);
   transition: all var(--transition-duration) var(--transition-style);
 }
@@ -367,5 +371,43 @@ body {
 
 .pointer-e-none {
   pointer-events: none;
+}
+
+/* from bottom to top */
+@-webkit-keyframes slideMenuUp {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  55% {
+    -webkit-transform: translateY(80%);
+            transform: translateY(80%);
+  }
+  95% {
+    -webkit-transform: translateY(60%);
+            transform: translateY(60%);
+  }
+  100% {
+    -webkit-transform: translateY(70%);
+            transform: translateY(70%);
+  }
+}
+@keyframes slideMenuUp {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  55% {
+    -webkit-transform: translateY(80%);
+            transform: translateY(80%);
+  }
+  95% {
+    -webkit-transform: translateY(60%);
+            transform: translateY(60%);
+  }
+  100% {
+    -webkit-transform: translateY(70%);
+            transform: translateY(70%);
+  }
 }
 /*# sourceMappingURL=app.css.map */

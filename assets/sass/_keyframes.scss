@@ -1,0 +1,15 @@
+/* from bottom to top */
+@keyframes slideMenuUp {
+  0% {
+    transform: translateY(100%);
+  }
+  55% {
+    transform: translateY(80%);
+  }
+  95% {
+    transform: translateY(60%);
+  }
+  100% {
+    transform: translateY(70%);
+  }
+}
