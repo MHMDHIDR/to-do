@@ -57,15 +57,6 @@ body {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 
-  .action-btn {
-    cursor: pointer;
-    color: #d2d2d2;
-    font-size: 1.5rem;
-  }
-  .pointer-e-none {
-    pointer-events: none;
-  }
-
   > header {
     background-image: url(../imgs/bg-2.jpg);
     background-size: 150%;
@@ -88,49 +79,19 @@ body {
         padding-top: 1.5rem;
 
         > .hamburger-menu {
+          cursor: pointer;
           position: relative;
           height: 1.5rem;
           width: 2rem;
           z-index: 4;
 
-          > input[type="checkbox"] {
-            cursor: pointer;
-            height: 1.5rem;
-            width: 2rem;
-            opacity: 0;
-
-            &:checked {
-              + .hamburger-lines {
-                // top: 0.7rem;
-                transform: rotate(-45deg);
-
-                &::before {
-                  opacity: 0;
-                }
-
-                &::after {
-                  // top: 0;
-                  transform: rotate(90deg) translateX(-1.25rem);
-                }
-              }
-
-              ~ .menu > .overlay {
-                transform: scale(1);
-
-                > .select-view {
-                  opacity: 1;
-                }
-              }
-            }
-          }
-
           > .hamburger-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
             height: 2px;
             width: 100%;
             background-color: #fff;
-            position: absolute;
-            top: 0;
-            pointer-events: none;
             transform-origin: right;
 
             &::before {
@@ -144,11 +105,25 @@ body {
               height: 2px;
               background-color: inherit;
               position: inherit;
-              top: 0.625rem;
+              top: 0.65rem;
             }
 
             &::after {
               top: 1.25rem;
+            }
+          }
+
+          &.active {
+            .hamburger-lines {
+              transform: rotate(-45deg);
+
+              &::before {
+                opacity: 0;
+              }
+
+              &::after {
+                transform: rotate(90deg) translateX(-1.25rem);
+              }
             }
           }
         }
@@ -193,8 +168,8 @@ body {
       > .overlay {
         background-color: var(--overlay-color);
         border-radius: 50%;
-        height: 200vh;
-        width: 200vw;
+        height: 300vh;
+        width: 300vw;
         display: flex;
         flex: none;
         justify-content: center;
@@ -202,8 +177,12 @@ body {
         transform: scale(0);
         z-index: 3;
 
-        &.show {
+        &.active {
           transform: scale(1);
+
+          > .select-view {
+            opacity: 1;
+          }
         }
       }
 
@@ -327,3 +306,4 @@ body {
 }
 
 @import "transitions";
+@import "helper-classes";

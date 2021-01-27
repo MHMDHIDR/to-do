@@ -1,15 +1,17 @@
-// Selectors
-const restBtn = document.querySelector(".fa-redo");
-const tasks = document.querySelector(".tasks");
+// global selectors
 const appContainer = document.querySelector(".app-container");
-const addBtn = document.querySelector(".add-btn");
-const inputTask = document.getElementById("task-input");
+const menuOverlay = document.querySelector('.menu > .overlay');
+
+const hambMenu = document.querySelector('.hamburger-menu');
+const reset = document.querySelector('.reset > .action-btn');
 const welcomePhrase = document.querySelector('#welcomePhrase');
 
-// Classes
-const CHECK = "fa-check-circle";
-const UNCHECK = "fa-circle";
-const DONE = "line-through";
+const tasks = document.querySelector(".tasks");
+const addBtn = document.querySelector(".add-btn");
+const inputTask = document.getElementById("task-input");
+
+const footer = document.querySelector('.app-container > footer');
+
 
 // show welcomePhrases Randomly
 const welcomePhrasesEn = [
@@ -23,54 +25,32 @@ welcomePhrase.innerText = welcomePhrasesEn[randomPhraseIndex];
 
 
 // EventListeners
-addBtn.addEventListener("click", addTask);
+// addBtn.addEventListener("click", addTask);
 
 appContainer.addEventListener("click", makeAction);
 
-// Functions
-function addTask(e) {
+// Main Function
+function makeAction(e) {
   // prevent the form from submitting
   e.preventDefault();
-  // Don't Insert empty values
-  if (inputTask.value == "" || inputTask.value.trim().length == 0) return;
-    
-  // insert task into task list
-  const taskElement = 
-  `<li class="task">
-    <i class="far fa-circle action-btn"></i>
-    <p class="todo">${inputTask.value}</p>
-    <div class="options">
-      <i class="far fa-edit action-btn"></i>
-      <i class="fas fa-thumbtack action-btn"></i>
-      <i class="far fa-trash-alt action-btn"></i>
-    </div>
-  </li>`;
-
-  tasks.insertAdjacentHTML("beforeend", taskElement);
-  inputTask.value = "";
-}
-
-function makeAction(e) {
   // make an action based on the target
   const targetElem = e.target;
   
-  const reset = document.querySelector('.reset > .action-btn');
+  // clear tasks
+  if(targetElem === reset) { clearTasks() }
 
-  const hambCheck = document.querySelector('.hamburger-menu > input[type="checkbox"]');
-  const menuOverlay = document.querySelector('.menu > .overlay');
+  // add task
+  if(targetElem === addBtn) { addTask() }
+
+  // toggle menu
+  if(targetElem === hambMenu) { toggleMenu() }
   
-  const footer = document.querySelector('.app-container > footer');
-  
-  /* === clear all list === */
-  if (targetElem == reset) { 
-    if(!confirm('Are You Sure You Want to Delete All Tasks \n(This can\'t be Undone!)?')) return;
-    tasks.innerHTML = '';
-  } else if(targetElem == hambCheck) {
-    menuOverlay.classList.toggle('show');
-    tasks.classList.toggle('pointer-e-none');
-    footer.classList.toggle('pointer-e-none');
-  }
-  
+
+  // check or uncheck
+  const CHECK = "fa-check-circle";
+  const UNCHECK = "fa-circle";
+  const DONE = "line-through";
+
   /* === check and uncheck an item === */
   if (targetElem.classList.contains(UNCHECK)) {
     targetElem.classList.remove(UNCHECK);
@@ -82,5 +62,46 @@ function makeAction(e) {
     targetElem.classList.add(UNCHECK);
   } else if (targetElem.classList.contains("fa-trash-alt")) {
     targetElem.parentNode.parentNode.remove();
+  }
+}
+
+
+/* === toggle menu === */
+const toggleMenu = () => {
+  hambMenu.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+}
+
+
+/* === add task to list === */
+const addTask = (e) => {
+  // Don't Insert empty values
+  if (inputTask.value == "" || inputTask.value.trim().length == 0) return;
+    
+  // insert task into task list
+  const taskTemplate = 
+  `<li class="task">
+    <i class="far fa-circle action-btn"></i>
+    <p class="todo">${inputTask.value}</p>
+    <div class="options">
+      <i class="far fa-edit action-btn"></i>
+      <i class="fas fa-thumbtack action-btn"></i>
+      <i class="far fa-trash-alt action-btn"></i>
+    </div>
+  </li>`;
+
+  tasks.insertAdjacentHTML("beforeend", taskTemplate);
+  inputTask.value = "";
+  // set foucs again for task input element
+  inputTask.setAttribute("autofocus", "on");
+}
+
+
+/* === clear all list === */
+const clearTasks = () => {
+  if(tasks.innerHTML != '' || tasks.innerHTML == null) {
+    if(confirm('Are You Sure You Want to Delete All Tasks \n(This can\'t be Undone!)?')) {
+      tasks.innerHTML = '';
+    }
   }
 }

@@ -66,16 +66,6 @@ body {
   border-top-right-radius: 1rem;
 }
 
-.app-container .action-btn {
-  cursor: pointer;
-  color: #d2d2d2;
-  font-size: 1.5rem;
-}
-
-.app-container .pointer-e-none {
-  pointer-events: none;
-}
-
 .app-container > header {
   background-image: url(../imgs/bg-2.jpg);
   background-size: 150%;
@@ -112,49 +102,20 @@ body {
 }
 
 .app-container > header > .container > nav > .hamburger-menu {
+  cursor: pointer;
   position: relative;
   height: 1.5rem;
   width: 2rem;
   z-index: 4;
 }
 
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"] {
-  cursor: pointer;
-  height: 1.5rem;
-  width: 2rem;
-  opacity: 0;
-}
-
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::before {
-  opacity: 0;
-}
-
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::after {
-  -webkit-transform: rotate(90deg) translateX(-1.25rem);
-          transform: rotate(90deg) translateX(-1.25rem);
-}
-
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked ~ .menu > .overlay {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked ~ .menu > .overlay > .select-view {
-  opacity: 1;
-}
-
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 2px;
   width: 100%;
   background-color: #fff;
-  position: absolute;
-  top: 0;
-  pointer-events: none;
   -webkit-transform-origin: right;
           transform-origin: right;
 }
@@ -170,11 +131,25 @@ body {
   height: 2px;
   background-color: inherit;
   position: inherit;
-  top: 0.625rem;
+  top: 0.65rem;
 }
 
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
   top: 1.25rem;
+}
+
+.app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines::before {
+  opacity: 0;
+}
+
+.app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines::after {
+  -webkit-transform: rotate(90deg) translateX(-1.25rem);
+          transform: rotate(90deg) translateX(-1.25rem);
 }
 
 .app-container > header > .container > nav > .reset {
@@ -218,8 +193,8 @@ body {
 .app-container > aside > .menu > .overlay {
   background-color: var(--overlay-color);
   border-radius: 50%;
-  height: 200vh;
-  width: 200vw;
+  height: 300vh;
+  width: 300vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,9 +212,13 @@ body {
   z-index: 3;
 }
 
-.app-container > aside > .menu > .overlay.show {
+.app-container > aside > .menu > .overlay.active {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.app-container > aside > .menu > .overlay.active > .select-view {
+  opacity: 1;
 }
 
 .app-container > aside > .menu > div > .select-view > li {
@@ -370,11 +349,23 @@ body {
   color: var(--primary-color);
 }
 
+/* Transitions */
 .hamburger-lines,
 .hamburger-lines::before,
 .hamburger-lines::after,
 .overlay {
   -webkit-transition: all var(--transition-duration) var(--transition-style);
   transition: all var(--transition-duration) var(--transition-style);
+}
+
+/* Helper classes */
+.action-btn {
+  cursor: pointer;
+  color: #d2d2d2;
+  font-size: 1.5rem;
+}
+
+.pointer-e-none {
+  pointer-events: none;
 }
 /*# sourceMappingURL=app.css.map */
