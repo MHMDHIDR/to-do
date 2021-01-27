@@ -26,7 +26,10 @@ body {
 :root {
   --overlay-color: rgba(20, 65, 124, 0.77);
   --primary-color: #4162f6;
-  --duration-speed: 0.5s;
+  --border-color: rgba(0, 0, 0, 0.1);
+  /* Transitions */
+  --transition-duration: 0.25s;
+  --transition-style: linear;
   /* Mozilla firefox Scrollbar */
   scrollbar-color: var(--primary-color) var(--overlay-color);
   scrollbar-width: thin;
@@ -56,6 +59,7 @@ body {
   max-width: 400px;
   min-width: 320px;
   min-height: 100vh;
+  max-height: 100vh;
   margin: auto;
   overflow: hidden;
   border-top-left-radius: 1rem;
@@ -73,7 +77,6 @@ body {
 }
 
 .app-container > header {
-  min-height: 17rem;
   background-image: url(../imgs/bg-2.jpg);
   background-size: 150%;
   background-repeat: no-repeat;
@@ -81,51 +84,59 @@ body {
 }
 
 .app-container > header > .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 90%;
+  height: 15rem;
   margin: auto;
 }
 
 .app-container > header > .container > nav {
-  height: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-height: 5rem;
+  max-width: 95%;
+  padding-top: 1.5rem;
 }
 
 .app-container > header > .container > nav > .hamburger-menu {
   position: relative;
-  top: 3rem;
-  height: 2rem;
-  width: 2.5rem;
+  height: 1.5rem;
+  width: 2rem;
   z-index: 4;
 }
 
 .app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"] {
   cursor: pointer;
-  width: inherit;
-  height: inherit;
-  display: block;
-  position: absolute;
-  top: -0.9rem;
-  left: 0;
+  height: 1.5rem;
+  width: 2rem;
   opacity: 0;
 }
 
 .app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines {
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::before, .app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::after {
-  top: 0;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::before {
+  opacity: 0;
 }
 
-.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked:hover + .hamburger-lines {
-  -webkit-transform: rotate(225deg);
-          transform: rotate(225deg);
+.app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked + .hamburger-lines::after {
+  -webkit-transform: rotate(90deg) translateX(-1.25rem);
+          transform: rotate(90deg) translateX(-1.25rem);
 }
 
 .app-container > header > .container > nav > .hamburger-menu > input[type="checkbox"]:checked ~ .menu > .overlay {
@@ -141,30 +152,32 @@ body {
   height: 2px;
   width: 100%;
   background-color: #fff;
+  position: absolute;
+  top: 0;
   pointer-events: none;
-  -webkit-transition: -webkit-transform var(--duration-speed) ease;
-  transition: -webkit-transform var(--duration-speed) ease;
-  transition: transform var(--duration-speed) ease;
-  transition: transform var(--duration-speed) ease, -webkit-transform var(--duration-speed) ease;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::before {
+  -webkit-transition-duration: 0.15s;
+          transition-duration: 0.15s;
 }
 
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::before, .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
   content: "";
-  position: absolute;
-  top: -10px;
-  width: inherit;
-  height: inherit;
-  background: inherit;
+  width: 100%;
+  height: 2px;
+  background-color: inherit;
+  position: inherit;
+  top: 0.625rem;
 }
 
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
-  top: 10px;
+  top: 1.25rem;
 }
 
 .app-container > header > .container > nav > .reset {
-  position: absolute;
-  right: 0;
-  top: 2.5rem;
   width: 1.5rem;
   height: 1.5rem;
   z-index: 1;
@@ -176,9 +189,10 @@ body {
 
 .app-container > header > .container > h2 {
   color: #fff;
-  text-transform: uppercase;
-  position: absolute;
-  bottom: 20px;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  text-align: center;
+  margin: 0 auto 0.5rem;
   z-index: 1;
 }
 
@@ -220,10 +234,6 @@ body {
           align-items: center;
   -webkit-transform: scale(0);
           transform: scale(0);
-  -webkit-transition: -webkit-transform var(--duration-speed) ease;
-  transition: -webkit-transform var(--duration-speed) ease;
-  transition: transform var(--duration-speed) ease;
-  transition: transform var(--duration-speed) ease, -webkit-transform var(--duration-speed) ease;
   z-index: 3;
 }
 
@@ -254,7 +264,7 @@ body {
 }
 
 .app-container > main .tasks {
-  margin: 0.5rem 1rem;
+  margin: 0.7rem 1rem 0;
   overflow: hidden;
 }
 
@@ -263,7 +273,7 @@ body {
   list-style: none;
   font-size: 22px;
   min-height: 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 15px;
 }
 
@@ -321,7 +331,7 @@ body {
   position: relative;
   width: 100%;
   min-height: 3rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--border-color);
 }
 
 .app-container > footer form {
@@ -363,16 +373,11 @@ body {
   color: var(--primary-color);
 }
 
-/* 
-  media for max-width (650px)
-  Anything smaller will apply here
-*/
-@media (max-width: 650px) {
-  .app-container .hamburger-lines {
-    left: 1rem;
-  }
-  .app-container .reset {
-    right: 1rem;
-  }
+.hamburger-lines,
+.hamburger-lines::before,
+.hamburger-lines::after,
+.overlay {
+  -webkit-transition: all var(--transition-duration) var(--transition-style);
+  transition: all var(--transition-duration) var(--transition-style);
 }
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,6 @@
+.hamburger-lines,
+.hamburger-lines::before,
+.hamburger-lines::after,
+.overlay {
+  transition: all var(--transition-duration) var(--transition-style);
+}

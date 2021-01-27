@@ -24,7 +24,11 @@ body {
 :root {
   --overlay-color: rgba(20, 65, 124, 0.77);
   --primary-color: #4162f6;
-  --duration-speed: 0.5s;
+  --border-color: rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-duration: 0.25s;
+  --transition-style: linear;
 
   /* Mozilla firefox Scrollbar */
   scrollbar-color: var(--primary-color) var(--overlay-color);
@@ -47,6 +51,7 @@ body {
   max-width: 400px;
   min-width: 320px;
   min-height: 100vh;
+  max-height: 100vh;
   margin: auto;
   overflow: hidden;
   border-top-left-radius: 1rem;
@@ -62,51 +67,51 @@ body {
   }
 
   > header {
-    min-height: 17rem;
     background-image: url(../imgs/bg-2.jpg);
     background-size: 150%;
     background-repeat: no-repeat;
     position: relative;
 
     > .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       width: 90%;
+      height: 15rem;
       margin: auto;
 
       > nav {
-        height: 70px;
         display: flex;
-        position: relative;
+        justify-content: space-between;
+        max-height: 5rem;
+        max-width: 95%;
+        padding-top: 1.5rem;
 
         > .hamburger-menu {
           position: relative;
-          top: 3rem;
-          height: 2rem;
-          width: 2.5rem;
+          height: 1.5rem;
+          width: 2rem;
           z-index: 4;
 
           > input[type="checkbox"] {
             cursor: pointer;
-            width: inherit;
-            height: inherit;
-            display: block;
-            position: absolute;
-            top: -0.9rem;
-            left: 0;
+            height: 1.5rem;
+            width: 2rem;
             opacity: 0;
 
             &:checked {
               + .hamburger-lines {
-                transform: rotate(135deg);
+                // top: 0.7rem;
+                transform: rotate(-45deg);
 
-                &::before,
-                &::after {
-                  top: 0;
-                  transform: rotate(90deg);
+                &::before {
+                  opacity: 0;
                 }
-              }
 
-              &:hover + .hamburger-lines {
-                transform: rotate(225deg);
+                &::after {
+                  // top: 0;
+                  transform: rotate(90deg) translateX(-1.25rem);
+                }
               }
 
               ~ .menu > .overlay {
@@ -123,31 +128,32 @@ body {
             height: 2px;
             width: 100%;
             background-color: #fff;
+            position: absolute;
+            top: 0;
             pointer-events: none;
-            // position: absolute;
-            // top: 0;
-            transition: transform var(--duration-speed) ease;
+            transform-origin: right;
+
+            &::before {
+              transition-duration: 0.15s;
+            }
 
             &::before,
             &::after {
               content: "";
-              position: absolute;
-              top: -10px;
-              width: inherit;
-              height: inherit;
-              background: inherit;
+              width: 100%;
+              height: 2px;
+              background-color: inherit;
+              position: inherit;
+              top: 0.625rem;
             }
 
             &::after {
-              top: 10px;
+              top: 1.25rem;
             }
           }
         }
 
         > .reset {
-          position: absolute;
-          right: 0;
-          top: 2.5rem;
           width: 1.5rem;
           height: 1.5rem;
           z-index: 1;
@@ -162,9 +168,10 @@ body {
 
       > h2 {
         color: #fff;
-        text-transform: uppercase;
-        position: absolute;
-        bottom: 20px;
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        text-align: center;
+        margin: 0 auto 0.5rem;
         z-index: 1;
       }
     }
@@ -193,7 +200,6 @@ body {
         justify-content: center;
         align-items: center;
         transform: scale(0);
-        transition: transform var(--duration-speed) ease;
         z-index: 3;
 
         &.show {
@@ -222,7 +228,7 @@ body {
     overflow: auto;
 
     .tasks {
-      margin: 0.5rem 1rem;
+      margin: 0.7rem 1rem 0;
       overflow: hidden;
 
       .task {
@@ -230,7 +236,7 @@ body {
         list-style: none;
         font-size: 22px;
         min-height: 40px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border-color);
         margin-bottom: 15px;
 
         &:last-of-type {
@@ -283,7 +289,7 @@ body {
     position: relative;
     width: 100%;
     min-height: 3rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--border-color);
 
     form {
       display: flex;
@@ -323,4 +329,4 @@ body {
   }
 }
 
-@import "_media-small";
+@import "transitions";

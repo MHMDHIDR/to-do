@@ -73,18 +73,18 @@ function makeAction(e) {
   
   const footer = document.querySelector('.app-container > footer');
   
-
-  if (targetElem == reset) { // clear all list
-    if(!confirm('Are You Sure You Want to Delete All Tasks (This can\'t be Undone!)?')) return;
+  /* === clear all list === */
+  if (targetElem == reset) { 
+    if(!confirm('Are You Sure You Want to Delete All Tasks \n(This can\'t be Undone!)?')) return;
     tasks.innerHTML = '';
   } else if(targetElem == hambCheck) {
     menuOverlay.classList.toggle('show');
     tasks.classList.toggle('pointer-e-none');
     footer.classList.toggle('pointer-e-none');
-    
   }
   
 
+  /* === check and uncheck an item === */
   if (targetElem.classList.contains(UNCHECK)) {
     targetElem.classList.remove(UNCHECK);
     targetElem.classList.add(CHECK);
