@@ -222,10 +222,8 @@ body {
   }
 
   > main {
-    min-height: 10rem;
-    max-height: 27rem;
     flex: 1;
-    overflow: auto;
+    overflow-x: hidden;
 
     .tasks {
       margin: 0.7rem 1rem 0;
@@ -288,7 +286,6 @@ body {
   > footer {
     position: relative;
     width: 100%;
-    min-height: 3rem;
     border-top: 1px solid var(--border-color);
 
     form {

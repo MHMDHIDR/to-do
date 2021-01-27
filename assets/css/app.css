@@ -255,12 +255,10 @@ body {
 }
 
 .app-container > main {
-  min-height: 10rem;
-  max-height: 27rem;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 .app-container > main .tasks {
@@ -330,7 +328,6 @@ body {
 .app-container > footer {
   position: relative;
   width: 100%;
-  min-height: 3rem;
   border-top: 1px solid var(--border-color);
 }
 
