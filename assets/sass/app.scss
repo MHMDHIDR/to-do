@@ -24,6 +24,7 @@ body {
 :root {
   --overlay-color: rgba(20, 65, 124, 0.77);
   --primary-color: #4162f6;
+  --green-circle: #00b400;
   --border-color: rgba(0, 0, 0, 0.1);
 
   /* Transitions */
@@ -220,12 +221,13 @@ body {
       overflow: hidden;
 
       .task {
-        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
         list-style: none;
-        font-size: 22px;
-        min-height: 40px;
+        font-size: 1.3rem;
         border-bottom: 1px solid var(--border-color);
-        margin-bottom: 15px;
 
         &:last-of-type {
           border-bottom: 0;
@@ -234,40 +236,52 @@ body {
 
         > .fa-check-circle,
         .fa-circle:hover {
-          color: #00b400;
+          color: var(--green-circle);
         }
 
-        & > i,
-        & > p,
         & > .options {
-          position: absolute;
-
-          .fa-edit:hover {
-            color: #555;
+          .edit-icon *,
+          .pin-icon *,
+          .trash-icon * {
+            pointer-events: none;
           }
 
-          .fa-thumbtack:hover {
-            color: rgb(50, 50, 50);
+          > .edit-icon {
+            path {
+              fill: #555;
+            }
+            &:hover path {
+              fill: var(--green-circle);
+            }
           }
 
-          .fa-trash-alt:hover {
-            color: #b40000;
+          > .pin-icon {
+            path {
+              fill: #555;
+            }
+            &:hover path {
+              fill: var(--primary-color);
+            }
+          }
+
+          > .trash-icon {
+            path {
+              fill: #555;
+            }
+            &:hover path {
+              fill: #b40000;
+            }
           }
         }
 
         > p {
-          left: 2.18rem;
-          width: 12.5rem;
+          width: 12rem;
           overflow: hidden;
           text-overflow: ellipsis;
           &.line-through {
             color: #d2d2d2;
             text-decoration: line-through;
           }
-        }
-
-        > .options {
-          right: 0;
         }
       }
     }

@@ -26,6 +26,7 @@ body {
 :root {
   --overlay-color: rgba(20, 65, 124, 0.77);
   --primary-color: #4162f6;
+  --green-circle: #00b400;
   --border-color: rgba(0, 0, 0, 0.1);
   /* Transitions */
   --transition-duration: 0.25s;
@@ -257,12 +258,19 @@ body {
 }
 
 .app-container > main .tasks .task {
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem 0;
   list-style: none;
-  font-size: 22px;
-  min-height: 40px;
+  font-size: 1.3rem;
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 15px;
 }
 
 .app-container > main .tasks .task:last-of-type {
@@ -272,36 +280,41 @@ body {
 
 .app-container > main .tasks .task > .fa-check-circle,
 .app-container > main .tasks .task .fa-circle:hover {
-  color: #00b400;
+  color: var(--green-circle);
 }
 
-.app-container > main .tasks .task > i,
-.app-container > main .tasks .task > p,
-.app-container > main .tasks .task > .options {
-  position: absolute;
+.app-container > main .tasks .task > .options .edit-icon *,
+.app-container > main .tasks .task > .options .pin-icon *,
+.app-container > main .tasks .task > .options .trash-icon * {
+  pointer-events: none;
 }
 
-.app-container > main .tasks .task > i .fa-edit:hover,
-.app-container > main .tasks .task > p .fa-edit:hover,
-.app-container > main .tasks .task > .options .fa-edit:hover {
-  color: #555;
+.app-container > main .tasks .task > .options > .edit-icon path {
+  fill: #555;
 }
 
-.app-container > main .tasks .task > i .fa-thumbtack:hover,
-.app-container > main .tasks .task > p .fa-thumbtack:hover,
-.app-container > main .tasks .task > .options .fa-thumbtack:hover {
-  color: #323232;
+.app-container > main .tasks .task > .options > .edit-icon:hover path {
+  fill: var(--green-circle);
 }
 
-.app-container > main .tasks .task > i .fa-trash-alt:hover,
-.app-container > main .tasks .task > p .fa-trash-alt:hover,
-.app-container > main .tasks .task > .options .fa-trash-alt:hover {
-  color: #b40000;
+.app-container > main .tasks .task > .options > .pin-icon path {
+  fill: #555;
+}
+
+.app-container > main .tasks .task > .options > .pin-icon:hover path {
+  fill: var(--primary-color);
+}
+
+.app-container > main .tasks .task > .options > .trash-icon path {
+  fill: #555;
+}
+
+.app-container > main .tasks .task > .options > .trash-icon:hover path {
+  fill: #b40000;
 }
 
 .app-container > main .tasks .task > p {
-  left: 2.18rem;
-  width: 12.5rem;
+  width: 12rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -309,10 +322,6 @@ body {
 .app-container > main .tasks .task > p.line-through {
   color: #d2d2d2;
   text-decoration: line-through;
-}
-
-.app-container > main .tasks .task > .options {
-  right: 0;
 }
 
 .app-container > footer {
@@ -370,8 +379,8 @@ body {
 /* Helper classes */
 .action-btn {
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .pointer-e-none {
