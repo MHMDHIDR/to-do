@@ -67,6 +67,9 @@ function makeAction(e) {
   // toggle menu
   if(targetElem === hambMenu) { toggleMenu() }
 
+  // close menu when has 
+  if (targetElem !== hambMenu) { closeMenu() }
+
   // remove task
   if(targetElem.classList.contains('trash-icon')) {
     targetElem.parentNode.parentNode.remove();
@@ -99,6 +102,11 @@ const toggleMenu = () => {
   menuOverlay.classList.toggle('active');
 }
 
+/* === close menu === */
+const closeMenu = () => {
+  hambMenu.classList.remove('active');
+  menuOverlay.classList.remove('active');
+}
 
 /* === add task to list === */
 const addTask = (e) => {
