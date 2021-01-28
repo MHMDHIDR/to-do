@@ -1,10 +1,11 @@
 // global selectors
 const appContainer = document.querySelector(".app-container");
+const header = document.querySelector('header');
 const menuOverlay = document.querySelector('.menu > .overlay');
 
 const hambMenu = document.querySelector('.hamburger-menu');
 const reset = document.querySelector('.reset > .action-btn');
-const welcomePhrase = document.querySelector('#welcomePhrase');
+const welcomingPhrase = document.querySelector('#welcomePhrase');
 
 const tasks = document.querySelector(".tasks");
 const addBtn = document.querySelector(".add-btn");
@@ -13,24 +14,41 @@ const inputTask = document.getElementById("task-input");
 const footer = document.querySelector('.app-container > footer');
 
 
-// show welcomePhrases Randomly
 /* 
-  html decimal code from:
+  html decimal code for smiley faces from:
   https://www.w3schools.com/charsets/ref_emoji_smileys.asp
 */
-const welcomePhrasesEn = [
-  'plan the day &#128513;', // 😁
+
+// Header
+const headBgImgs = ['bg-1','bg-2','bg-3','bg-4','bg-5'];
+const welcomingPhrasesEn = [
+  'plan your day &#128513;', // 😁
   'you got this	&#128170; &#128521;', // 💪😉
   'how are you doing today? &#129300;', // 🤔
   'you can accomplish anything! &#128515;' // 😃
 ];
-const randomPhraseIndex = Math.floor(Math.random() * welcomePhrasesEn.length);
-welcomePhrase.innerHTML = welcomePhrasesEn[randomPhraseIndex];
+
+function changeBgAndWelcoming(bgImg = true, welcoming = true) {
+  // change bgImgs
+  if(bgImg == true) {
+    const randomBgImgIndex = Math.floor(Math.random() * headBgImgs.length);
+    header.style.backgroundImage = `url(assets/imgs/bg-${randomBgImgIndex + 1}.jpg)`;
+  } else {
+    header.style.backgroundImage = `url(assets/imgs/${headBgImgs[1]}.jpg`; // second img
+  }
+  // welcomingPhrasesEn
+  if (welcoming == true) {
+    const randomPhraseIndex = Math.floor(Math.random() * welcomingPhrasesEn.length);
+    welcomingPhrase.innerHTML = welcomingPhrasesEn[randomPhraseIndex];
+  } else {
+    welcomingPhrase.innerHTML = welcomingPhrasesEn[0];
+  }
+}
+// calling the function changeBgAndWelcoming
+changeBgAndWelcoming();
 
 
-// EventListeners
-// addBtn.addEventListener("click", addTask);
-
+// Main EventListener for the App
 appContainer.addEventListener("click", makeAction);
 
 // Main Function

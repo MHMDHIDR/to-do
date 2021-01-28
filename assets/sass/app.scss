@@ -58,7 +58,6 @@ body {
   border-top-right-radius: 1rem;
 
   > header {
-    background-image: url(../imgs/bg-2.jpg);
     background-size: 150%;
     background-repeat: no-repeat;
     position: relative;
@@ -134,8 +133,11 @@ body {
           z-index: 1;
 
           > .action-btn {
-            &:hover {
-              color: #fff;
+            path {
+              fill: #d2d2d2;
+            }
+            &:hover path {
+              fill: #fff;
             }
           }
         }
@@ -146,7 +148,10 @@ body {
         font-size: 1.2rem;
         text-transform: capitalize;
         text-align: center;
-        margin: 0 auto 0.5rem;
+        margin: 0 auto 0.35rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.3rem;
         z-index: 1;
       }
     }
@@ -289,8 +294,9 @@ body {
         background-color: transparent;
 
         > .action-btn {
-          font-size: 2rem;
-          color: var(--primary-color);
+          path {
+            fill: var(--primary-color);
+          }
         }
       }
 
@@ -313,4 +319,3 @@ body {
 
 @import "transitions";
 @import "helper-classes";
-@import "keyframes";
