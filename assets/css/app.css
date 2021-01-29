@@ -68,9 +68,9 @@ body {
 }
 
 .app-container > header {
-  background-size: 150%;
+  background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
+  background-position: center;
 }
 
 .app-container > header > .container {
@@ -85,7 +85,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 90%;
-  height: 15rem;
+  height: 11rem;
   margin: auto;
 }
 
@@ -97,8 +97,8 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   max-height: 5rem;
-  max-width: 95%;
-  padding-top: 1.5rem;
+  width: 95%;
+  margin-top: 1.5rem;
 }
 
 .app-container > header > .container > nav > .hamburger-menu {
@@ -144,6 +144,8 @@ body {
 }
 
 .app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines::before {
+  -webkit-transform: translateY(-0.65rem);
+          transform: translateY(-0.65rem);
   opacity: 0;
 }
 
@@ -169,10 +171,10 @@ body {
 .app-container > header > .container > h2 {
   color: #fff;
   font-size: 1.2rem;
-  text-transform: capitalize;
+  text-transform: uppercase;
   text-align: center;
   margin: 0 auto 0.35rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 0.2rem 0.5rem;
   border-radius: 0.3rem;
   z-index: 1;
@@ -218,18 +220,20 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  z-index: 3;
   -webkit-transform: translateY(150%);
           transform: translateY(150%);
   -webkit-transition-duration: 2s;
           transition-duration: 2s;
+  opacity: 0;
+  z-index: 3;
 }
 
 .app-container > aside > .menu > .overlay.active {
-  -webkit-transform: translateY(75%);
-          transform: translateY(75%);
+  -webkit-transform: translateY(73%);
+          transform: translateY(73%);
   -webkit-transition-duration: 0.7s;
           transition-duration: 0.7s;
+  opacity: 1;
   pointer-events: all;
 }
 

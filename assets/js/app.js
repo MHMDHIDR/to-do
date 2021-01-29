@@ -24,7 +24,7 @@ const headBgImgs = ['bg-1','bg-2','bg-3','bg-4','bg-5'];
 const welcomingPhrasesEn = [
   'plan your day &#128513;', // 😁
   'you got this	&#128170; &#128521;', // 💪😉
-  'how are you doing today? &#129300;', // 🤔
+  'what are you doing today? &#129300;', // 🤔
   'you can accomplish anything! &#128515;' // 😃
 ];
 
@@ -53,24 +53,17 @@ appContainer.addEventListener("click", makeAction);
 
 // Main Function
 function makeAction(e) {
-  // prevent the form from submitting
   e.preventDefault();
-  // make an action based on the target
   const targetElem = e.target;
   
-  // clear tasks
   if(targetElem === reset) { clearTasks() }
-
-  // add task
+  
   if(targetElem === addBtn) { addTask() }
-
-  // toggle menu
+  
   if(targetElem === hambMenu) { toggleMenu() }
-
-  // close menu when has 
+  
   if (targetElem !== hambMenu) { closeMenu() }
-
-  // remove task
+  
   if(targetElem.classList.contains('trash-icon')) {
     targetElem.parentNode.parentNode.remove();
   }
@@ -119,7 +112,7 @@ const addTask = (e) => {
     <i class="far fa-circle action-btn"></i>
     <p class="todo">${inputTask.value}</p>
     <div class="options">
-    <!-- edit icon -->
+      <!-- edit icon -->
       <svg class="edit-icon action-btn" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0)">
           <path
@@ -196,7 +189,7 @@ const addTask = (e) => {
   tasks.insertAdjacentHTML("beforeend", taskTemplate);
   inputTask.value = "";
   // set foucs again for task input element
-  inputTask.setAttribute("autofocus", "on");
+  inputTask.focus();
 }
 
 

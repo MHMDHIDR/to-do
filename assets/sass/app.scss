@@ -59,24 +59,24 @@ body {
   border-top-right-radius: 1rem;
 
   > header {
-    background-size: 150%;
+    background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    background-position: center;
 
     > .container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 90%;
-      height: 15rem;
+      height: 11rem;
       margin: auto;
 
       > nav {
         display: flex;
         justify-content: space-between;
         max-height: 5rem;
-        max-width: 95%;
-        padding-top: 1.5rem;
+        width: 95%;
+        margin-top: 1.5rem;
 
         > .hamburger-menu {
           cursor: pointer;
@@ -118,6 +118,7 @@ body {
               transform: rotate(-45deg);
 
               &::before {
+                transform: translateY(-0.65rem);
                 opacity: 0;
               }
 
@@ -147,10 +148,10 @@ body {
       > h2 {
         color: #fff;
         font-size: 1.2rem;
-        text-transform: capitalize;
+        text-transform: uppercase;
         text-align: center;
         margin: 0 auto 0.35rem;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 0.2rem 0.5rem;
         border-radius: 0.3rem;
         z-index: 1;
@@ -187,13 +188,15 @@ body {
         flex: none;
         justify-content: center;
         align-items: flex-start;
-        z-index: 3;
         transform: translateY(150%);
         transition-duration: 2s;
+        opacity: 0;
+        z-index: 3;
 
         &.active {
-          transform: translateY(75%);
+          transform: translateY(73%);
           transition-duration: 0.7s;
+          opacity: 1;
           pointer-events: all;
         }
       }
