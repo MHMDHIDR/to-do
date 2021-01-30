@@ -8,10 +8,18 @@ const reset = document.querySelector('.reset > .action-btn');
 const welcomingPhrase = document.querySelector('#welcomePhrase');
 
 const tasks = document.querySelector(".tasks");
-const addBtn = document.querySelector(".add-btn");
+const addTaskBtn = document.querySelector(".add-btn");
 const inputTask = document.getElementById("task-input");
 
 const footer = document.querySelector('.app-container > footer');
+
+const modal = document.querySelector('.modal');
+const modalTitle = document.querySelector('.modal-header .title');
+const modalText = document.querySelector('.modal-text');
+const modalCloseBtn = document.querySelector('.model-close-btn');
+const modalDeleteBtn = document.querySelector('.modal-delete-btn');
+const modalOverlay = document.querySelector('#modal-overlay');
+
 
 
 /* 
@@ -56,17 +64,35 @@ function makeAction(e) {
   e.preventDefault();
   const targetElem = e.target;
   
-  if(targetElem === reset) { clearTasks() }
+  if(targetElem == addTaskBtn) { addTask() }
   
-  if(targetElem === addBtn) { addTask() }
+  if(targetElem == hambMenu) { toggleMenu() }
   
-  if(targetElem === hambMenu) { toggleMenu() }
+  if (targetElem != hambMenu) { closeMenu() }
   
-  if (targetElem !== hambMenu) { closeMenu() }
-  
+  // delete one task
   if(targetElem.classList.contains('trash-icon')) {
-    targetElem.parentNode.parentNode.remove();
+    targetElem.parentNode.parentNode.remove()
   }
+  
+  // delete all tasks
+  if(targetElem == reset) {
+    if(tasks.innerHTML != '' || tasks.innerHTML == null) {
+      toggleModel(
+        'please confirm the deletion or click outside this box',
+        'Are You Sure You Want to Delete All Tasks\n (This can\'t be Undone!)?'
+      )
+    }
+  }
+
+  if(targetElem == modalOverlay || targetElem == modalCloseBtn) toggleModel()
+  
+  // Delete all tasks
+  if(targetElem == modalDeleteBtn) {
+    clearTasks(); 
+    toggleModel();
+  }
+  
   
 
   // check or uncheck
@@ -194,10 +220,19 @@ const addTask = (e) => {
 
 
 /* === clear all list === */
-const clearTasks = () => {
-  if(tasks.innerHTML != '' || tasks.innerHTML == null) {
-    if(confirm('Are You Sure You Want to Delete All Tasks \n(This can\'t be Undone!)?')) {
-      tasks.innerHTML = '';
-    }
+const clearTasks = (deleteTask) => {
+  if(deleteTask != null) {
+    deleteTask.remove();
+  } else {
+    tasks.innerHTML = '';
   }
+}
+
+/* === Model === */
+const toggleModel = (modelTitle = 'message title', modelContent = '') => {
+  modal.classList.toggle('active');
+  modalOverlay.classList.toggle('active');
+  modalTitle.textContent = modelTitle;
+  modalText.innerHTML = modelContent;
+  modalDeleteBtn.textContent = 'Delete';
 }

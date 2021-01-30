@@ -24,7 +24,7 @@ body {
 }
 
 :root {
-  --overlay-color: rgba(20, 65, 124, 0.77);
+  --overlay-color: rgba(20, 65, 124, 0.7);
   --primary-color: #4162f6;
   --green-circle: #00b400;
   --border-color: rgba(0, 0, 0, 0.1);
@@ -379,10 +379,106 @@ body {
   color: var(--primary-color);
 }
 
+.app-container .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+}
+
+.app-container .modal.active {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+}
+
+.app-container .modal > .modal-header {
+  padding: 0.7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-container .modal > .modal-header .title {
+  text-transform: capitalize;
+}
+
+.app-container .modal > .modal-header .model-close-btn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.app-container .modal > .modal-body {
+  padding: 0.7rem;
+  text-align: center;
+}
+
+.app-container .modal > .modal-body > .modal-text {
+  text-align: left;
+}
+
+.app-container .modal > .modal-body > .modal-delete-btn {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 0.35rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.35rem;
+}
+
+.app-container .modal > .modal-body > .modal-delete-btn:hover {
+  background-color: var(--overlay-color);
+}
+
+.app-container .modal > .modal-body > .modal-delete-btn:focus {
+  outline: 2px dashed salmon;
+  outline-offset: 0.3rem;
+}
+
+.app-container #modal-overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-color);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.app-container #modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 /* Transitions */
 .hamburger-lines,
 .hamburger-lines::before,
-.hamburger-lines::after {
+.hamburger-lines::after,
+#modal-overlay {
   -webkit-transition: all var(--transition-duration) var(--transition-style);
   transition: all var(--transition-duration) var(--transition-style);
 }
