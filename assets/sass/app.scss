@@ -24,7 +24,8 @@ body {
 :root {
   --overlay-color: rgba(20, 65, 124, 0.7);
   --primary-color: #4162f6;
-  --green-circle: #00b400;
+  --green-color: #00b400;
+  --grey-color: #555;
   --border-color: rgba(0, 0, 0, 0.1);
 
   /* Transitions */
@@ -230,6 +231,10 @@ body {
       margin: 0.7rem 1rem 0;
       overflow: hidden;
 
+      @media (max-width: 500px) {
+        margin: 0.5rem 0.5rem 0;
+      }
+
       .task {
         display: flex;
         justify-content: space-between;
@@ -244,12 +249,32 @@ body {
           margin-bottom: 0;
         }
 
-        > .fa-check-circle,
-        .fa-circle:hover {
-          color: var(--green-circle);
+        > .action-btn.circle {
+          border: 2px solid var(--grey-color);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            border-color: var(--green-color);
+          }
+
+          &.checked {
+            border-color: var(--green-color);
+
+            &::after {
+              color: var(--green-color);
+              content: "\2714";
+            }
+          }
         }
 
         & > .options {
+          @media (max-width: 500px) {
+            min-width: 100px;
+          }
+
           .edit-icon *,
           .pin-icon *,
           .trash-icon * {
@@ -258,16 +283,16 @@ body {
 
           > .edit-icon {
             path {
-              fill: #555;
+              fill: var(--grey-color);
             }
             &:hover path {
-              fill: var(--green-circle);
+              fill: var(--green-color);
             }
           }
 
           > .pin-icon {
             path {
-              fill: #555;
+              fill: var(--grey-color);
             }
             &:hover path {
               fill: var(--primary-color);
@@ -276,7 +301,7 @@ body {
 
           > .trash-icon {
             path {
-              fill: #555;
+              fill: var(--grey-color);
             }
             &:hover path {
               fill: #b40000;

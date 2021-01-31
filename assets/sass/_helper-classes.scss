@@ -1,8 +1,11 @@
 /* Helper classes */
 .action-btn {
   cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+  overflow: hidden;
 }
 
 .pointer-e-none {

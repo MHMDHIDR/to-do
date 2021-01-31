@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,oBAAoB;AACpB,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,OAAO;EACf,KAAK,EAAE,OAAO;EACd,SAAS,EAAE,MAAM;CAClB;;AAED,AAAA,eAAe,CAAC;EACd,cAAc,EAAE,IAAI;CACrB",
-    "sources": [
-        "../sass/helper_classes.scss"
-    ],
-    "names": [],
-    "file": "helper_classes.css"
-}

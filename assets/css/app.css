@@ -26,7 +26,8 @@ body {
 :root {
   --overlay-color: rgba(20, 65, 124, 0.7);
   --primary-color: #4162f6;
-  --green-circle: #00b400;
+  --green-color: #00b400;
+  --grey-color: #555;
   --border-color: rgba(0, 0, 0, 0.1);
   /* Transitions */
   --transition-duration: 0.25s;
@@ -268,6 +269,12 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 500px) {
+  .app-container > main .tasks {
+    margin: 0.5rem 0.5rem 0;
+  }
+}
+
 .app-container > main .tasks .task {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -289,9 +296,37 @@ body {
   margin-bottom: 0;
 }
 
-.app-container > main .tasks .task > .fa-check-circle,
-.app-container > main .tasks .task .fa-circle:hover {
-  color: var(--green-circle);
+.app-container > main .tasks .task > .action-btn.circle {
+  border: 2px solid var(--grey-color);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app-container > main .tasks .task > .action-btn.circle:hover {
+  border-color: var(--green-color);
+}
+
+.app-container > main .tasks .task > .action-btn.circle.checked {
+  border-color: var(--green-color);
+}
+
+.app-container > main .tasks .task > .action-btn.circle.checked::after {
+  color: var(--green-color);
+  content: "\2714";
+}
+
+@media (max-width: 500px) {
+  .app-container > main .tasks .task > .options {
+    min-width: 100px;
+  }
 }
 
 .app-container > main .tasks .task > .options .edit-icon *,
@@ -301,15 +336,15 @@ body {
 }
 
 .app-container > main .tasks .task > .options > .edit-icon path {
-  fill: #555;
+  fill: var(--grey-color);
 }
 
 .app-container > main .tasks .task > .options > .edit-icon:hover path {
-  fill: var(--green-circle);
+  fill: var(--green-color);
 }
 
 .app-container > main .tasks .task > .options > .pin-icon path {
-  fill: #555;
+  fill: var(--grey-color);
 }
 
 .app-container > main .tasks .task > .options > .pin-icon:hover path {
@@ -317,7 +352,7 @@ body {
 }
 
 .app-container > main .tasks .task > .options > .trash-icon path {
-  fill: #555;
+  fill: var(--grey-color);
 }
 
 .app-container > main .tasks .task > .options > .trash-icon:hover path {
@@ -486,8 +521,11 @@ body {
 /* Helper classes */
 .action-btn {
   cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+  overflow: hidden;
 }
 
 .pointer-e-none {

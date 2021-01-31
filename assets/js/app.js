@@ -7,6 +7,10 @@ const hambMenu = document.querySelector('.hamburger-menu');
 const reset = document.querySelector('.reset > .action-btn');
 const welcomingPhrase = document.querySelector('#welcomePhrase');
 
+const CHECK = "checked";
+const UNCHECK = "circle";
+const DONE = "line-through";
+
 const tasks = document.querySelector(".tasks");
 const addTaskBtn = document.querySelector(".add-btn");
 const inputTask = document.getElementById("task-input");
@@ -93,24 +97,10 @@ function makeAction(e) {
     toggleModel();
   }
   
-  
-
-  // check or uncheck
-  const CHECK = "fa-check-circle";
-  const UNCHECK = "fa-circle";
-  const DONE = "line-through";
-
-  /* === check and uncheck an item === */
-  if (targetElem.classList.contains(UNCHECK)) {
-    targetElem.classList.remove(UNCHECK);
-    targetElem.classList.add(CHECK);
-    targetElem.nextElementSibling.classList.add(DONE);
-  } else if (targetElem.classList.contains(CHECK)) {
-    targetElem.classList.remove(CHECK);
-    targetElem.nextElementSibling.classList.remove(DONE);
-    targetElem.classList.add(UNCHECK);
-  } else if (targetElem.classList.contains("fa-trash-alt")) {
-    targetElem.parentNode.parentNode.remove();
+  // if the task uncheck toggle check mark (class) on it
+  if (targetElem.classList.contains(UNCHECK)) { 
+    targetElem.classList.toggle(CHECK); 
+    targetElem.nextElementSibling.classList.toggle(DONE);
   }
 }
 
@@ -135,7 +125,8 @@ const addTask = (e) => {
   // insert task into task list
   const taskTemplate = 
   `<li class="task">
-    <i class="far fa-circle action-btn"></i>
+    <!-- <i class="far fa-circle action-btn"></i> -->
+    <span class="action-btn circle"></span>
     <p class="todo">${inputTask.value}</p>
     <div class="options">
       <!-- edit icon -->
@@ -224,7 +215,9 @@ const clearTasks = (deleteTask) => {
   if(deleteTask != null) {
     deleteTask.remove();
   } else {
-    tasks.innerHTML = '';
+    while (tasks.firstChild) {
+      tasks.removeChild(tasks.lastChild);
+    }
   }
 }
 
