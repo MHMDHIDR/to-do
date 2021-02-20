@@ -52,9 +52,9 @@ body {
   background-color: #fcfcfc;
   max-width: 400px;
   min-width: 320px;
-  min-height: 100vh;
+  height: 95vh;
   max-height: 100vh;
-  margin: auto;
+  margin: 1.2rem auto 0;
   overflow: hidden;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -264,6 +264,7 @@ body {
             border-color: var(--green-color);
 
             &::after {
+              font-size: 80%;
               color: var(--green-color);
               content: "\2714";
             }
@@ -313,6 +314,9 @@ body {
           width: 12rem;
           overflow: hidden;
           text-overflow: ellipsis;
+          flex: 1;
+          padding: 0 0.7rem;
+
           &.line-through {
             color: #d2d2d2;
             text-decoration: line-through;

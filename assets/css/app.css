@@ -60,9 +60,9 @@ body {
   background-color: #fcfcfc;
   max-width: 400px;
   min-width: 320px;
-  min-height: 100vh;
+  height: 95vh;
   max-height: 100vh;
-  margin: auto;
+  margin: 1.2rem auto 0;
   overflow: hidden;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -319,6 +319,7 @@ body {
 }
 
 .app-container > main .tasks .task > .action-btn.circle.checked::after {
+  font-size: 80%;
   color: var(--green-color);
   content: "\2714";
 }
@@ -363,6 +364,10 @@ body {
   width: 12rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 0.7rem;
 }
 
 .app-container > main .tasks .task > p.line-through {

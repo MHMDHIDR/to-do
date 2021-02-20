@@ -266,7 +266,7 @@ const toggleTodo = (id) => {
     
   });
 
-  console.log(todos);
+  // console.log(todos);
 
   addToLocalStorage(todos);
 } 
