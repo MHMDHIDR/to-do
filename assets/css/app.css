@@ -505,7 +505,8 @@ body {
   right: 0;
   bottom: 0;
   background-color: var(--overlay-color);
-  z-index: 1;
+  background-image: radial-gradient(at center, rgba(103, 58, 183, 0.1) 0%, rgba(7, 22, 104, 0.7) 100%);
+  z-index: 4;
   overflow: hidden;
 }
 
