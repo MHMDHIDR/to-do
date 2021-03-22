@@ -68,6 +68,7 @@ appContainer.addEventListener("click", makeAction);
 // Main Function
 function makeAction(e) {
   e.preventDefault();
+  
   const targetElem = e.target;
   
   if(targetElem == addTaskBtn) { addTask() }
