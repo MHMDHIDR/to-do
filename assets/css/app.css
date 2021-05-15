@@ -1,8 +1,8 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -11,12 +11,10 @@
   font-family: "Fira Code Regular";
   src: url("../fonts/fira_code/FiraCode-Regular.ttf");
 }
-
 @font-face {
   font-family: "Fira Code Bold";
   src: url("../fonts/fira_code/FiraCode-Bold.ttf");
 }
-
 body {
   background-color: rgba(0, 0, 0, 0.1);
   font-family: "Fira Code Regular", sans-serif;
@@ -47,68 +45,45 @@ body {
 
 .app-container {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fcfcfc;
   max-width: 400px;
   min-width: 320px;
-  height: 95vh;
+  height: 100vh;
   max-height: 100vh;
   margin: 1.2rem auto 0;
   overflow: hidden;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-
 .app-container > .header__overlay {
   position: absolute;
   width: 100%;
   height: 11rem;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 .app-container > header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .app-container > header > .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   width: 90%;
   height: 11rem;
   margin: auto;
 }
-
 .app-container > header > .container > nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   max-height: 5rem;
   width: 95%;
   margin-top: 1.5rem;
 }
-
 .app-container > header > .container > nav > .hamburger-menu {
   cursor: pointer;
   position: relative;
@@ -116,7 +91,6 @@ body {
   width: 2rem;
   z-index: 4;
 }
-
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines {
   position: absolute;
   top: 0;
@@ -124,15 +98,11 @@ body {
   height: 2px;
   width: 100%;
   background-color: #fff;
-  -webkit-transform-origin: right;
-          transform-origin: right;
+  transform-origin: right;
 }
-
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::before {
-  -webkit-transition-duration: 0.15s;
-          transition-duration: 0.15s;
+  transition-duration: 0.15s;
 }
-
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::before, .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
   content: "";
   width: 100%;
@@ -141,41 +111,30 @@ body {
   position: inherit;
   top: 0.65rem;
 }
-
 .app-container > header > .container > nav > .hamburger-menu > .hamburger-lines::after {
   top: 1.25rem;
 }
-
 .app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
-
 .app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines::before {
-  -webkit-transform: translateY(-0.65rem);
-          transform: translateY(-0.65rem);
+  transform: translateY(-0.65rem);
   opacity: 0;
 }
-
 .app-container > header > .container > nav > .hamburger-menu.active .hamburger-lines::after {
-  -webkit-transform: rotate(90deg) translateX(-1.25rem);
-          transform: rotate(90deg) translateX(-1.25rem);
+  transform: rotate(90deg) translateX(-1.25rem);
 }
-
 .app-container > header > .container > nav > .reset {
   width: 1.5rem;
   height: 1.5rem;
   z-index: 1;
 }
-
 .app-container > header > .container > nav > .reset > .action-btn path {
   fill: #d2d2d2;
 }
-
 .app-container > header > .container > nav > .reset > .action-btn:hover path {
   fill: #fff;
 }
-
 .app-container > header > .container > h2 {
   color: #fff;
   font-size: 1.2rem;
@@ -187,64 +146,41 @@ body {
   border-radius: 0.3rem;
   z-index: 1;
 }
-
 .app-container > aside > .menu {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   overflow: hidden;
   pointer-events: none;
 }
-
 .app-container > aside > .menu > .overlay {
-  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(65, 98, 246, 0.5)), to(rgba(20, 65, 124, 0.5)));
   background-image: linear-gradient(to bottom right, rgba(65, 98, 246, 0.5), rgba(20, 65, 124, 0.5));
   background-color: var(--overlay-color);
   border-radius: 2rem;
   height: 100%;
   width: 100%;
   padding-top: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-transform: translateY(150%);
-          transform: translateY(150%);
-  -webkit-transition-duration: 2s;
-          transition-duration: 2s;
+  flex: none;
+  justify-content: center;
+  align-items: flex-start;
+  transform: translateY(150%);
+  transition-duration: 2s;
   opacity: 0;
   z-index: 3;
 }
-
 .app-container > aside > .menu > .overlay.active {
-  -webkit-transform: translateY(73%);
-          transform: translateY(73%);
-  -webkit-transition-duration: 0.7s;
-          transition-duration: 0.7s;
+  transform: translateY(73%);
+  transition-duration: 0.7s;
   opacity: 1;
   pointer-events: all;
 }
-
 .app-container > aside > .menu > div > .select-view > li {
   cursor: pointer;
   list-style: none;
@@ -252,143 +188,101 @@ body {
   margin-bottom: 0.8rem;
   text-transform: uppercase;
 }
-
 .app-container > aside > .menu > div > .select-view > li:last-of-type {
   margin-bottom: 0;
 }
-
 .app-container > main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   overflow-x: hidden;
 }
-
 .app-container > main .tasks {
   margin: 0.7rem 1rem 0;
   overflow: hidden;
 }
-
 @media (max-width: 500px) {
   .app-container > main .tasks {
     margin: 0.5rem 0.5rem 0;
   }
 }
-
 .app-container > main .tasks .task {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.5rem 0;
   list-style: none;
   font-size: 1.3rem;
   border-bottom: 1px solid var(--border-color);
 }
-
 .app-container > main .tasks .task:last-of-type {
   border-bottom: 0;
   margin-bottom: 0;
 }
-
 .app-container > main .tasks .task > .action-btn.circle {
   border: 2px solid var(--grey-color);
   border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 .app-container > main .tasks .task > .action-btn.circle:hover {
   border-color: var(--green-color);
 }
-
 .app-container > main .tasks .task > .action-btn.circle.checked {
   border-color: var(--green-color);
 }
-
 .app-container > main .tasks .task > .action-btn.circle.checked::after {
   font-size: 80%;
   color: var(--green-color);
-  content: "\2714";
+  content: "✔";
 }
-
 @media (max-width: 500px) {
   .app-container > main .tasks .task > .options {
     min-width: 100px;
   }
 }
-
 .app-container > main .tasks .task > .options .edit-icon *,
 .app-container > main .tasks .task > .options .pin-icon *,
 .app-container > main .tasks .task > .options .trash-icon * {
   pointer-events: none;
 }
-
 .app-container > main .tasks .task > .options > .edit-icon path {
   fill: var(--grey-color);
 }
-
 .app-container > main .tasks .task > .options > .edit-icon:hover path {
   fill: var(--green-color);
 }
-
 .app-container > main .tasks .task > .options > .pin-icon path {
   fill: var(--grey-color);
 }
-
 .app-container > main .tasks .task > .options > .pin-icon:hover path {
   fill: var(--primary-color);
 }
-
 .app-container > main .tasks .task > .options > .trash-icon path {
   fill: var(--grey-color);
 }
-
 .app-container > main .tasks .task > .options > .trash-icon:hover path {
   fill: #b40000;
 }
-
 .app-container > main .tasks .task > p {
   width: 12rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   padding: 0 0.7rem;
 }
-
 .app-container > main .tasks .task > p.line-through {
   color: #d2d2d2;
   text-decoration: line-through;
 }
-
 .app-container > footer {
   position: relative;
   width: 100%;
   border-top: 1px solid var(--border-color);
 }
-
 .app-container > footer form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
-
 .app-container > footer form > .add-btn {
   position: absolute;
   left: 1rem;
@@ -400,11 +294,9 @@ body {
   border: none;
   background-color: transparent;
 }
-
 .app-container > footer form > .add-btn > .action-btn path {
   fill: var(--primary-color);
 }
-
 .app-container > footer form > .task-input {
   width: 100%;
   border: none;
@@ -414,18 +306,14 @@ body {
   padding: 1rem;
   padding-left: 3.5rem;
 }
-
 .app-container > footer form > .task-input::-webkit-input-placeholder {
   color: var(--primary-color);
 }
-
 .app-container .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-          transform: translate(-50%, -50%) scale(0);
-  -webkit-transition: 200ms ease-in-out;
+  transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
   border: 1px solid black;
   border-radius: 10px;
@@ -434,30 +322,19 @@ body {
   width: 500px;
   max-width: 80%;
 }
-
 .app-container .modal.active {
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
-
 .app-container .modal > .modal-header {
   padding: 0.7rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--border-color);
 }
-
 .app-container .modal > .modal-header .title {
   text-transform: capitalize;
 }
-
 .app-container .modal > .modal-header .model-close-btn {
   cursor: pointer;
   border: none;
@@ -466,16 +343,13 @@ body {
   font-size: 2rem;
   font-weight: 700;
 }
-
 .app-container .modal > .modal-body {
   padding: 0.7rem;
   text-align: center;
 }
-
 .app-container .modal > .modal-body > .modal-text {
   text-align: left;
 }
-
 .app-container .modal > .modal-body > .modal-delete-btn {
   cursor: pointer;
   background-color: var(--primary-color);
@@ -487,16 +361,13 @@ body {
   border: none;
   border-radius: 0.35rem;
 }
-
 .app-container .modal > .modal-body > .modal-delete-btn:hover {
   background-color: var(--overlay-color);
 }
-
 .app-container .modal > .modal-body > .modal-delete-btn:focus {
   outline: 2px dashed salmon;
   outline-offset: 0.3rem;
 }
-
 .app-container #modal-overlay {
   position: fixed;
   opacity: 0;
@@ -509,7 +380,6 @@ body {
   z-index: 4;
   overflow: hidden;
 }
-
 .app-container #modal-overlay.active {
   opacity: 1;
   pointer-events: all;
@@ -520,7 +390,6 @@ body {
 .hamburger-lines::before,
 .hamburger-lines::after,
 #modal-overlay {
-  -webkit-transition: all var(--transition-duration) var(--transition-style);
   transition: all var(--transition-duration) var(--transition-style);
 }
 
@@ -537,4 +406,5 @@ body {
 .pointer-e-none {
   pointer-events: none;
 }
+
 /*# sourceMappingURL=app.css.map */

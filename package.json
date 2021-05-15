@@ -1,0 +1,23 @@
+{
+  "name": "to-do",
+  "version": "1.0.0",
+  "description": "## simple to-do app for practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MHMDHIDR/to-do.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MHMDHIDR/to-do/issues"
+  },
+  "homepage": "https://github.com/MHMDHIDR/to-do#readme",
+  "devDependencies": {
+    "sass": "^1.32.13"
+  }
+}

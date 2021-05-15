@@ -52,7 +52,7 @@ body {
   background-color: #fcfcfc;
   max-width: 400px;
   min-width: 320px;
-  height: 95vh;
+  height: 100vh;
   max-height: 100vh;
   margin: 1.2rem auto 0;
   overflow: hidden;
@@ -442,7 +442,11 @@ body {
     right: 0;
     bottom: 0;
     background-color: var(--overlay-color);
-    background-image: radial-gradient(at center, rgba(103, 58, 183,.1) 0%, rgba(7, 22, 104,.7) 100%);
+    background-image: radial-gradient(
+      at center,
+      rgba(103, 58, 183, 0.1) 0%,
+      rgba(7, 22, 104, 0.7) 100%
+    );
     z-index: 4;
     overflow: hidden;
     &.active {
