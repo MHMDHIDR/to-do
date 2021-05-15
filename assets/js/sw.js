@@ -1,17 +1,24 @@
-self.addEventListener('install', function(e) {
-    console.log('[Service Worker] Install');
-});
-
-var cacheName = 'v1';
-var appShellFiles = [
-    '../../index.html'
+let cacheName = 'v1',
+    appShellFiles = [
+    '../../index.html',
+    '../imgs/bg-1.jpg',
+    '../imgs/bg-2.jpg',
+    '../imgs/bg-3.jpg',
+    '../imgs/bg-4.jpg',
+    '../imgs/bg-5.jpg',
+    '../imgs/icons/favicon1.svg',
+    '../imgs/icons/favicon2.svg',
+    '../imgs/icons/add.svg',
+    '../imgs/icons/edit.svg',
+    '../imgs/icons/pin.svg',
+    '../imgs/icons/reset.svg',
+    '../imgs/icons/trash.svg',
+    '../css/app.css'
 ];
 
 self.addEventListener('install', function(e) {
-    console.log('[Service Worker] Install');
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
-            console.log('[Service Worker] Caching all: app shell and content');
             return cache.addAll(appShellFiles);
         })
     );
