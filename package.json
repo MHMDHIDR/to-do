@@ -4,7 +4,9 @@
   "description": "## simple to-do app for practice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run sass\" \"npm run live\"",
+    "live": "five-server",
+    "sass": "sass --watch src/assets/scss:public/assets/css --style compressed"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/MHMDHIDR/to-do#readme",
   "devDependencies": {
-    "sass": "^1.32.13"
+    "sass": "^1.32.13",
+    "concurrently": "^6.2.1"
   }
 }
