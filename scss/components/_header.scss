@@ -12,7 +12,7 @@ header {
   background-position: center;
 
   .nav {
-    background-color: $light_color;
+    background-image: linear-gradient(rgba($light_color, 0.45), rgba($light_color, 0.05));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +70,17 @@ header {
     }
 
     &__reset {
-      background-color: pink;
+      path {
+        fill: $primary_color;
+      }
     }
+  }
+
+  .motivational__quote {
+    padding: 1rem;
+    color: $light_color;
+    background-image: linear-gradient(rgba($dark_color, 0.1), rgba($dark_color, 0.75));
+    font-size: 1.4rem;
+    user-select: none;
   }
 }

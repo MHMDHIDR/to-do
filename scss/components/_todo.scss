@@ -1,6 +1,62 @@
+@use '../variables/colors' as *;
+
 .todo {
   $todo_height: 35rem;
   height: $todo_height;
   max-height: $todo_height;
   overflow-x: scroll;
+
+  .items {
+    list-style: none;
+
+    .item {
+      $icon_size: 1.88rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+
+      &::before {
+        content: '';
+        width: $icon_size;
+        height: $icon_size;
+        display: flex;
+        justify-content: center;
+        margin-right: -1.75rem;
+        border: 1px solid rgba($dark_color, 0.5);
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      :not(&.checked):hover::before {
+        opacity: 0.35;
+      }
+
+      &:hover,
+      &.checked {
+        &::before {
+          content: url('../imgs/icons/green__check.svg');
+        }
+      }
+
+      .options {
+        display: flex;
+        gap: 0.5rem;
+
+        .edit,
+        .pin,
+        .delete {
+          display: flex;
+
+          &:hover {
+            svg {
+              path {
+                fill: $dark_color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

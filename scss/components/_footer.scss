@@ -1,0 +1,36 @@
+@use '../variables/colors' as *;
+
+footer {
+  $footer_size: 3rem;
+
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba($dark_color, 0.25);
+  background-color: white;
+  height: $footer_size;
+
+  .add {
+    &__btn {
+      display: flex;
+      padding: 0 1rem;
+      opacity: 0.7;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+
+    &__text {
+      width: 100%;
+      border: none;
+      height: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+
+      &:focus {
+        outline: 0.05rem dashed $primary_color;
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Cairo', sans-serif;
 }
 
 :root {
@@ -15,7 +16,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0.3rem;
+  width: 0.25rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -32,6 +33,8 @@ body {
   $container_width: 25rem;
   width: $container_width;
   max-width: $container_width;
+  background-color: $light_color;
+  overflow-x: hidden;
 }
 
 .upper {
@@ -40,4 +43,9 @@ body {
 
 .pointer {
   cursor: pointer;
+}
+
+button {
+  border: none;
+  background: unset;
 }
