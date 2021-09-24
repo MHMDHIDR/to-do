@@ -1,0 +1,75 @@
+@use '../variables/colors' as *;
+
+header {
+  $header_height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: $header_height;
+  max-height: $header_height;
+  background-image: url('../imgs/bg-1.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .nav {
+    background-color: $light_color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    &__toggle {
+      $toggle__size: 2.5rem;
+
+      display: flex;
+      width: $toggle__size;
+      height: $toggle__size - 0.6;
+
+      &__lines {
+        position: relative;
+        display: block;
+        width: inherit;
+        height: $toggle__size / 10;
+        background-color: $primary_color;
+        transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+
+        &::before {
+          background-color: inherit;
+          top: $toggle__size / 3;
+        }
+
+        &::after {
+          background-color: inherit;
+          top: $toggle__size / 1.5;
+        }
+      }
+
+      &.active {
+        .nav__toggle__lines {
+          transform: rotate(-45deg);
+          transform-origin: right;
+
+          &::before {
+            transform: translateY(400%);
+            opacity: 0;
+          }
+
+          &::after {
+            transform: rotate(90deg) translateX(-64%);
+          }
+        }
+      }
+    }
+
+    &__reset {
+    }
+  }
+}

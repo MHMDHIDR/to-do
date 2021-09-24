@@ -1,0 +1,6 @@
+.todo {
+  $todo_height: 35rem;
+  height: $todo_height;
+  max-height: $todo_height;
+  overflow-x: scroll;
+}

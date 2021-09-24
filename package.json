@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run sass\" \"npm run live\"",
     "live": "five-server",
-    "sass": "sass --watch src/assets/scss:public/assets/css --style compressed"
+    "sass": "sass --watch scss:assets/css --style compressed"
   },
   "repository": {
     "type": "git",

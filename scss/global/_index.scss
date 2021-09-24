@@ -1,0 +1,43 @@
+@use '../variables/colors' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  /* Mozilla firefox Scrollbar */
+  scrollbar-color: $primary_color $light_color;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  $container_width: 25rem;
+  width: $container_width;
+  max-width: $container_width;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.pointer {
+  cursor: pointer;
+}
