@@ -1,7 +1,7 @@
 //Todo Item ELement
-export const todoItemElement = (todoTxt) => {
+export const todoItemElement = (todoTxt, todoId) => {
   return `
-    <li class="item pointer checked">
+    <li class="item pointer checked" data-id="${todoId}">
       <p class="item__text">${todoTxt}</p>
       <div class="options">
         <button class="edit pointer">
