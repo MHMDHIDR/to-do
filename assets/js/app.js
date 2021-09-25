@@ -17,8 +17,9 @@ const addToLocalStorage = () => {
 
       localStorage.setItem('todos', JSON.stringify(todo));
 
-      addTxt.value = '';
       renderTodos();
+      addTxt.value = '';
+      addTxt.focus();
     }
   });
 };
@@ -27,7 +28,9 @@ const renderTodos = () => {
   const items = document.querySelector('.items');
   const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-  items.innerHTML = todos.map((todo) => todoItemElement(todo.text, todo.id));
+  todos.map((todo) => {
+    items.insertAdjacentHTML('beforeend', todoItemElement(todo.text, todo.id));
+  });
 };
 
 renderTodos();

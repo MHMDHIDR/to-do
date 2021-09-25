@@ -17,6 +17,14 @@
       align-items: center;
       padding: 1rem 2rem;
 
+      &__text {
+        flex: 1;
+        margin-left: $icon_size - 1;
+        max-width: 11rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
       &::before {
         content: '';
         width: $icon_size;
@@ -33,12 +41,7 @@
         text-decoration: line-through from-font;
 
         .item__text {
-          flex: 1;
           opacity: 0.35;
-          margin-left: $icon_size - 0.5;
-          max-width: 11rem;
-          text-overflow: ellipsis;
-          overflow: hidden;
         }
       }
 
