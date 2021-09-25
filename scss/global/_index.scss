@@ -17,6 +17,7 @@
 
 ::-webkit-scrollbar {
   width: 0.25rem;
+  height: 0;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -31,8 +32,12 @@ body {
 
 .container {
   $container_width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: $container_width;
   max-width: $container_width;
+  min-width: $container_width;
   background-color: $light_color;
   overflow-x: hidden;
 }

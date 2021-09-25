@@ -1,9 +1,10 @@
 @use '../variables/colors' as *;
 
 .todo {
-  $todo_height: 35rem;
+  $todo_height: 15rem;
+  flex: 1;
   height: $todo_height;
-  max-height: $todo_height;
+  max-height: $todo_height * 2;
   overflow-x: scroll;
 
   .items {
@@ -28,8 +29,17 @@
         overflow: hidden;
       }
 
-      :not(&.checked):hover::before {
-        opacity: 0.35;
+      &.checked {
+        text-decoration: line-through from-font;
+
+        .item__text {
+          flex: 1;
+          opacity: 0.35;
+          margin-left: $icon_size - 0.5;
+          max-width: 11rem;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
       }
 
       &:hover,
@@ -37,6 +47,10 @@
         &::before {
           content: url('../imgs/icons/green__check.svg');
         }
+      }
+
+      &:not(.checked)::before {
+        opacity: 0.35;
       }
 
       .options {
