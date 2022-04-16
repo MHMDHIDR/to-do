@@ -1,37 +1,41 @@
-import { todoItemElement } from './todoItemElement.js';
-import { validInput } from './validInput.js';
+import { todoItemElement } from './todoItemElement.js'
+import { validInput } from './validInput.js'
+
+renderTodos()
+addToLocalStorage()
 
 //ADD todos to LocalStorage
-const addToLocalStorage = () => {
-  let todo = [];
-  const addBtn = document.querySelector('.add__btn');
-  const addTxt = document.querySelector('.add__text');
+function addToLocalStorage() {
+  let todos = []
+  const addBtn = document.querySelector('[data-add-todo]')
+  const addTxt = document.querySelector('[data-todo-text]')
 
   addBtn.addEventListener('click', () => {
-    if (validInput(addTxt)) {
-      todo.push({
+    const { isValid } = validInput(addTxt)
+
+    if (isValid) {
+      todos.push({
         id: Date.now(),
         text: addTxt.value,
         completed: false
-      });
+      })
 
-      localStorage.setItem('todos', JSON.stringify(todo));
+      localStorage.setItem('todos', JSON.stringify(todos))
 
-      renderTodos();
-      addTxt.value = '';
-      addTxt.focus();
+      renderTodos()
+      addTxt.value = ''
+      addTxt.focus()
     }
-  });
-};
+  })
+}
 
-const renderTodos = () => {
-  const items = document.querySelector('.items');
-  const todos = JSON.parse(localStorage.getItem('todos')) || [];
+function renderTodos() {
+  const items = document.querySelector('.items')
+  const todos = JSON.parse(localStorage.getItem('todos')) || []
 
-  todos.map((todo) => {
-    items.insertAdjacentHTML('beforeend', todoItemElement(todo.text, todo.id));
-  });
-};
+  todos.map(todo => {
+    items.insertAdjacentHTML('beforeend', todoItemElement(todo.text, todo.id))
+  })
+}
 
-renderTodos();
-addToLocalStorage();
+console.log(JSON.parse(localStorage.getItem('todos')))

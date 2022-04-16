@@ -1,2 +1,2 @@
 node_modules
-fiveserver.config.js
+*.config.js

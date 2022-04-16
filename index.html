@@ -21,7 +21,7 @@
     <div class="container">
       <!-- Notifications -->
       <div class="notification">
-        <p class="notification__txt upper green"></p>
+        <p class="notification__txt upper green">السلام عليكم</p>
       </div>
       <!-- HEADER -->
       <header>
@@ -50,13 +50,14 @@
       </section>
       <!-- Input Feild -->
       <footer>
-        <button class="add__btn pointer">
+        <button class="add__btn pointer" data-add-todo>
           <svg
             width="32"
             height="32"
             viewBox="0 0 32 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class="pointer-events-none"
           >
             <path
               d="M16 0C7.17706 0 0 7.17706 0 16C0 24.8229 7.17706 32 16 32C24.8229 32 32 24.8217 32 16C32 7.17831 24.8229 0 16 0ZM16 29.5213C8.54531 29.5213 2.47869 23.4559 2.47869 16C2.47869 8.54406 8.54531 2.47869 16 2.47869C23.4547 2.47869 29.5213 8.54406 29.5213 16C29.5213 23.4559 23.4559 29.5213 16 29.5213Z"
@@ -68,7 +69,7 @@
             />
           </svg>
         </button>
-        <input type="text" class="add__text" />
+        <input type="text" class="add__text" data-todo-text />
       </footer>
     </div>
 

@@ -1,21 +1,26 @@
 @use '../variables/colors' as *;
+@use '../variables/spacing' as *;
 
 .notification {
-  position: relative;
+  position: fixed;
+  width: $container_width;
+  max-width: $container_width;
+  height: $notification_height;
+  max-height: $notification_height;
   z-index: 10;
 
   &__txt {
-    position: absolute;
     background-color: lighten($primary_color, 10);
     color: #fff;
-    width: 100%;
     text-align: center;
     font-weight: bold;
+    font-size: 1.3rem;
+    user-select: none;
     word-spacing: 0.5rem;
-    padding: 0.7rem 0;
+    padding: 0.5rem 0;
     opacity: 0;
     transform: translateY(-100%);
-    transition: all 0.5s ease-in-out;
+    transition: all 250ms linear;
 
     &.active {
       opacity: 1;

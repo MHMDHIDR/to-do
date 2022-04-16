@@ -1,7 +1,10 @@
 @use '../variables/colors' as *;
+@use '../variables/spacing' as *;
+@use 'sass:math';
 
 header {
   $header_height: 15rem;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,7 +32,7 @@ header {
         position: relative;
         display: block;
         width: inherit;
-        height: $toggle__size / 10;
+        height: math.div($toggle__size, 10);
         background-color: $primary_color;
         transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
 
@@ -43,12 +46,12 @@ header {
 
         &::before {
           background-color: inherit;
-          top: $toggle__size / 3;
+          top: math.div($toggle__size, 3);
         }
 
         &::after {
           background-color: inherit;
-          top: $toggle__size / 1.5;
+          top: math.div($toggle--size, 1.5);
         }
       }
 
@@ -77,10 +80,10 @@ header {
   }
 
   .motivational__quote {
-    padding: 1rem;
+    padding: 0.2rem 0.7rem;
     color: $light_color;
-    background-image: linear-gradient(rgba($dark_color, 0.1), rgba($dark_color, 0.75));
-    font-size: 1.4rem;
+    background-image: linear-gradient(rgba($light_color, 0.25), rgba($dark_color, 0.75));
+    font-size: 1.25rem;
     user-select: none;
   }
 }

@@ -1,4 +1,5 @@
 @use '../variables/colors' as *;
+@use '../variables/spacing' as *;
 
 *,
 *::before,
@@ -27,23 +28,32 @@
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100vh;
+
+  background-color: darken($light_color, 5%);
 }
 
 .container {
-  $container_width: 25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: $container_width;
-  max-width: $container_width;
   min-width: $container_width;
+  max-width: $container_width;
+  height: 90vh;
+  max-height: $container_width * 2;
   background-color: $light_color;
-  overflow-x: hidden;
+  overflow: hidden;
+  border-radius: 1.5em;
 }
 
 .upper {
   text-transform: uppercase;
+}
+
+.pointer-events-none {
+  pointer-events: none;
 }
 
 .pointer {
